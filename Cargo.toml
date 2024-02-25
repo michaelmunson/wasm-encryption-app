@@ -11,4 +11,9 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
+getrandom = { version = "0.2", features = ["js"] }
+aes-gcm-siv = "0.11.1"
+argon2 = "0.5.3"
+flate2 = "1.0.28"
 wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1.7"

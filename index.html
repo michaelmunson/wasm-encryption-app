@@ -6,9 +6,9 @@
   </head>
   <body>
     <script type="module">
-      import init, { greet } from "./pkg/hello_wasm.js";
+      import init, { encode_decode_demo } from "./pkg/hello_wasm.js";
       init().then(() => {
-        greet("WebAssembly");
+        encode_decode_demo("QWERTYUIOPASDFGHJKLZXCVBNM", "THIS IS SOME PLAINTEXT");
       });
     </script>
   </body>
