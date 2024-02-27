@@ -1,8 +1,8 @@
-## building
+# Running
 ```bash
 bash build.sh
 ```
-no cache
+# Serving
 ```bash
-bash build.sh reset
+bash build.sh serve
 ```
