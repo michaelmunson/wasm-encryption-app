@@ -15,8 +15,6 @@ body {
     }
 }
 
-#app {}
-
 #app>header {
     transition:300ms ease-out;
     height:1vh;
