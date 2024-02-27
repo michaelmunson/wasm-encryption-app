@@ -3,12 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <title>hello-wasm example</title>
+    <link href="./index.css" rel="stylesheet">
   </head>
   <body>
+    <div id="app">
+        <div id="intro">
+            <h1 id="intro-title"></h1>
+        </div>
+        <header>
+            <hgroup>
+                <h1>ClientCrypt</h1>
+            </hgroup>
+        </header>
+        <main>
+            <details>
+                <summary>&nbsp;File Input</summary>
+                <div class="details-content">
+                    <div id="file-encryption">
+                        <label class="file-upload-button">
+                            Encrypt File
+                            <input type="file"/>
+                        </label>
+                        <label class="file-upload-button secondary">
+                            Decrypt File
+                            <input type="file"/>
+                        </label>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>&nbsp;Text Input</summary>
+                <div class="details-content">
+                    <textarea id="text-input" rows="20" placeholder="Secretive Text Here..."></textarea>
+                </div>
+            </details>
+        </main>
+    </div>
+    
     <script type="module">
-      import init, { encode_decode_demo } from "./pkg/hello_wasm.js";
+      import init, {encode_decode_demo} from "./pkg/hello_wasm.js";
       init().then(() => {
-        encode_decode_demo("QWERTYUIOPASDFGHJKLZXCVBNM", "THIS IS SOME PLAINTEXT");
+        // encode_decode_demo("QWERTYUIOPASDFGHJKLZXCVBNM", "THIS IS SOME PLAINTEXT");
       });
     </script>
   </body>

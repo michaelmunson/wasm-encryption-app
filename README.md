@@ -1,4 +1,8 @@
 ## building
 ```bash
-wasm-pack build --target web
+bash build.sh
+```
+no cache
+```bash
+bash build.sh reset
 ```

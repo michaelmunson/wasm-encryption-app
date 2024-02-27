@@ -20,11 +20,6 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn greet(name: &str) {
-    alert(&format!("Hello, {}!", name));
-}
-
-#[wasm_bindgen]
 pub fn hashme(pwd: &str) {
     match derive_key_from_password(pwd) {
         Ok(s) => alert(&format!("Hashed password: {:x?}!", s)),

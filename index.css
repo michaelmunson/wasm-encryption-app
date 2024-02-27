@@ -1,0 +1,297 @@
+html,
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#app {}
+
+#app>header {
+    border-bottom: 2px solid black;
+}
+
+#app>header>hgroup>h1{
+    margin-left: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+#app hgroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#app hgroup>p {
+    color: rgb(65, 65, 65);
+}
+
+main {
+    margin:20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+}
+
+details {
+    width: 100%;
+}
+
+details > summary {
+    cursor: pointer;
+    list-style-type: "◇";
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-left: 10px;
+    user-select: none;
+    padding-left: 10px;
+}
+
+details[open] > summary {
+    list-style-type: "◆";
+}
+
+
+details > .details-content {
+    display: flex;
+    padding:20px 20px 40px 20px;
+    margin: 0px 20px;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+}
+
+#file-encryption {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.file-upload-button {
+    background: darkblue;
+    font-weight: bold;
+    font-family: system-ui;
+    box-shadow: 0px 2px 2px 0px gray;
+    color: white;
+    font-size: 1.3rem;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.file-upload-button.secondary {
+    border: 1px solid darkblue;
+    background: white;
+    color: darkblue;
+}
+
+.file-upload-button:hover {
+    box-shadow: none !important;
+    transform:translateY(2px)
+}
+
+.file-upload-button > input {
+    display: none;
+}
+
+#text-input {
+    width: 100%;
+    border:2px solid darkblue;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+/* INTRO */
+#intro {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: intro-fade 1s ease-out 3.5s forwards;
+}
+
+#intro-title::before {
+    content: "ClientCrypt";
+    font-family: 'Courier New', Courier, monospace;
+    animation: cryptic-flash 3s;
+}
+
+@keyframes intro-fade {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes cryptic-flash-in-out {
+    0% {
+        content: "ClientCrypt";
+    }
+
+    5% {
+        content: "Clie3tCrypt";
+    }
+
+    10% {
+        content: "Ckie3tCrypt";
+    }
+
+    15% {
+        content: "Ckie3tCrXpt";
+    }
+
+    20% {
+        content: "Ckie3tIrXpt";
+    }
+
+    25% {
+        content: "Ckie3tIrXp$";
+    }
+
+    30% {
+        content: "Dkve3tIrXp$";
+    }
+
+    35% {
+        content: "Dkve4tIjXp$";
+    }
+
+    40% {
+        content: "Dkve3tIjXp$";
+    }
+
+    45% {
+        content: "Dkwe3tIjXp$";
+    }
+
+    50% {
+        content: "Dkie3tIjXp$";
+    }
+
+    55% {
+        content: "Dkie4tIjXp$";
+    }
+
+    60% {
+        content: "Dkie3tIrXp$";
+    }
+
+    65% {
+        content: "Ckie3tIrXp$";
+    }
+
+    70% {
+        content: "Ckie3tIrXpt";
+    }
+
+    85% {
+        content: "Ckie3tCrXpt";
+    }
+
+    90% {
+        content: "Ckie3tCrypt";
+    }
+
+    95% {
+        content: "Clie3tCrypt";
+    }
+
+    100% {
+        content: "ClientCrypt";
+    }
+}
+
+@keyframes cryptic-flash {
+    0% {
+        content: "Ev4b3dmOXp$"
+    }
+
+    5% {
+        content: "Ev4I3dmOXp$"
+    }
+
+    10% {
+        content: "Ev4I3dmoXp$"
+    }
+
+    15% {
+        content: "Ev4e3dmoXp$"
+    }
+
+    20% {
+        content: "Ev4e3dIoXp$"
+    }
+
+    25% {
+        content: "Ek4e3dIoXp$"
+    }
+
+    30% {
+        content: "Ek4e3dIjXp$"
+    }
+
+    35% {
+        content: "Ek4e3xIjXp$"
+    }
+
+    40% {
+        content: "Qk4e3xIjXp$"
+    }
+
+    45% {
+        content: "Qk4e3tIjXp$";
+    }
+
+    50% {
+        content: "Qkie3tIjXp$";
+    }
+
+    55% {
+        content: "Qkie4tIjXp$";
+    }
+
+    60% {
+        content: "Qkie3tIrXp$";
+    }
+
+    65% {
+        content: "Ckie3tIrXp$";
+    }
+
+    70% {
+        content: "Ckie3tIrXpt";
+    }
+
+    85% {
+        content: "Ckie3tCrXpt";
+    }
+
+    90% {
+        content: "Ckie3tCrypt";
+    }
+
+    95% {
+        content: "Clie3tCrypt";
+    }
+
+    100% {
+        content: "ClientCrypt";
+    }
+}
