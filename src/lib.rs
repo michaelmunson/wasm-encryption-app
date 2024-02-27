@@ -36,6 +36,22 @@ pub fn encode_decode_demo(password: &str, plaintext: &str) {
     alert(&format!("Original: {}\n\nCiphertext: {:x?}\n\nDecoded: {}", plaintext, ciphertext, decoded_string));
 }
 
+#[wasm_bindgen]
+pub fn encrypt(password: &str, plaintext: &str) -> Vec<u8>{
+    console_error_panic_hook::set_once();
+    let ciphertext = compress_and_encrypt(password, plaintext.as_bytes()).unwrap();
+    
+    return ciphertext
+}
+
+#[wasm_bindgen]
+pub fn decrypt(password: &str, ciphertext: Vec<u8>) -> String {
+    console_error_panic_hook::set_once();
+    let decoded = decrypt_and_decompress(password, &ciphertext[..]).unwrap();
+    let decoded_string = String::from_utf8(decoded).unwrap();
+    return decoded_string;
+}
+
 fn derive_key_from_password(password: &str) -> Result<[u8; PWD_KEY_SIZE], &'static str> {
     let mut output_key_material = [0u8; PWD_KEY_SIZE]; // Can be any desired size
     Argon2::default().hash_password_into(password.as_bytes(),
