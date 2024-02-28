@@ -15,8 +15,8 @@ body {
     }
 }
 
-#app>header {
-    transition:300ms ease-out;
+#app > header {
+    transition:300ms ease;
     height:1vh;
     min-height: 80px;
     background: var(--theme-bg);
@@ -61,27 +61,43 @@ body {
 
         
     }
-    
-    & h1 {
-        text-align: center;
-        width: 100%;
 
-        &::before {
-            content: "ClientCrypt";
-            font-family: 'Courier New', Courier, monospace;
-            animation: cryptic-flash var(--intro-length);
+    & hgroup {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & h1 {
+            text-align: center;
+            width: 100%;
+    
+            &::before {
+                content: "ClientCrypt";
+                font-family: 'Courier New', Courier, monospace;
+                animation: cryptic-flash var(--intro-length);
+            }
+        }
+
+        & span {
+            margin-top: -23px;
+            color: #8585ff;
+            font-size: 1rem;
+            cursor: pointer;
+            &::before {
+                content: "▼";
+            }
+            &.password-input-mode {
+                display: none;
+            }
+        }
+
+        & p {
+            color: rgb(65, 65, 65);
         }
     }
-}
-
-#app hgroup {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#app hgroup>p {
-    color: rgb(65, 65, 65);
+    
+    
 }
 
 main {
@@ -99,45 +115,56 @@ main {
 
 details {
     width: 100%;
+    overflow: hidden;
+
+    & summary {
+        cursor: pointer;
+        list-style-type: "◇";
+        color: var(--theme-bg);
+        font-size: 1.7rem;
+        font-weight: bold;
+        margin-left: 10px;
+        user-select: none;
+        padding-left: 10px;
+        background: white;
+        z-index: 100;
+        position: relative;
+
+        & span {
+            color:black;
+        }
+    }
+
+    &[open] {
+        & summary {
+            list-style-type: "◆";
+        }
+
+    }
+
+    & .details-content {
+        display: flex;
+        flex-direction: column;
+        padding:20px 20px 40px 20px;
+        margin: 0px 20px;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+        gap: 20px;
+
+        & #file-encryption {
+            margin-top: 20px;
+            display: flex;
+            width: 100%;
+            max-width: 700px;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+    }
 }
 
-details > summary {
-    cursor: pointer;
-    list-style-type: "◇";
-    color: var(--theme-bg);
-    font-size: 1.7rem;
-    font-weight: bold;
-    margin-left: 10px;
-    user-select: none;
-    padding-left: 10px;
-}
 
-details[open] > summary {
-    list-style-type: "◆";
-}
-
-details > summary > span {
-    color: black;
-}
-
-details > .details-content {
-    display: flex;
-    padding:20px 20px 40px 20px;
-    margin: 0px 20px;
-    justify-content: center;
-    border-bottom: 1px solid lightgray;
-}
-
-#file-encryption {
-    margin-top: 20px;
-    display: flex;
-    width: 100%;
-    max-width: 500px;
-    justify-content: space-around;
-    gap: 20px;
-}
-
-.file-upload-button {
+.button {
     background: var(--theme-bg);
     font-weight: bold;
     font-family: system-ui;
@@ -151,21 +178,21 @@ details > .details-content {
     text-align: center;
     cursor: pointer;
     transition: 200ms;
-}
 
-.file-upload-button.secondary {
-    border: 1px solid var(--theme-bg);
-    background: white;
-    color: var(--theme-bg);
-}
+    &.secondary {
+        border: 1px solid var(--theme-bg);
+        background: white;
+        color: var(--theme-bg);
+    }
 
-.file-upload-button:hover {
-    box-shadow: none !important;
-    transform:translateY(2px)
-}
+    &:hover {
+        box-shadow: none !important;
+        transform:translateY(2px)
+    }
 
-.file-upload-button > input {
-    display: none;
+    & input {
+        display: none;
+    }
 }
 
 #text-input {
@@ -173,6 +200,15 @@ details > .details-content {
     border:2px solid var(--theme-bg);
     border-radius: 15px;
     padding: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap:15px; 
+
+    & button {
+    }
 }
 
 #download-anchor {

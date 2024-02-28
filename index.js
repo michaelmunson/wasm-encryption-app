@@ -8,8 +8,50 @@ init().then(() => {
         downloadAnchor.href = URL.createObjectURL(blob);
         downloadAnchor.download = filename;
         downloadAnchor.click();
+    }
+    const pswd = {
+        init(){
+            document.getElementById('password-input')
+                .addEventListener('keypress', function(e){
+                    if (e.key === "Enter"){
+                        document.querySelectorAll('.password-input-mode')
+                            .forEach(element => {
+                                element.classList.remove('password-input-mode')
+                                element.classList.add('password-input-mode-off'); 
+                            });
+                    }
+                });
+            document.querySelector('hgroup span')
+                .addEventListener('click', function(){
+                    document.querySelectorAll('.password-input-mode-off')
+                        .forEach(element => {
+                            element.classList.remove('password-input-mode-off')
+                            element.classList.add('password-input-mode'); 
+                        });
+                })
+            /*
+            function pswdkeydown(e){
+                                    if (e.keyCode === 13){
+                                        document.querySelectorAll('.password-input-mode')
+                                        .forEach(element => element.classList.remove('password-input-mode'))
+                                    }
+                                }
+            */
+        }
+    }
+    const details = {
+        init(){
+            const detailsElements = [...document.querySelectorAll('details')]; 
+            detailsElements.forEach(element => {
+                element.addEventListener('click', function(){
+                    if (!this.open){
+                        detailsElements.filter(e => e !== this).forEach(e => e.open = false); 
+                    }
+                })
+            })
+        }
     } 
-    const fileEncryption = {
+    const fileInput = {
         init(){
             document.querySelectorAll('#file-encryption input').forEach(element => {
                 const dataRole = element.getAttribute('data-role');
@@ -37,15 +79,30 @@ init().then(() => {
                             const decrypted = decrypt(password, arrBuff);
                             const decryptedBlob = new Blob([decrypted]); 
                             download(decryptedBlob, `${name}.decoded.txt`);
+
                         }
                     })
                 }
             })
         }
     }
+    const textInput = {
+        init(){
+            const button = document.getElementById('encrypt-text-input-button')
+            button.addEventListener('click', function(){
+                const text = document.getElementById('text-input').value;
+                const password = getPassword(); 
+                const encrypted = encrypt(password, text);
+                const encryptedBlob = new Blob([encrypted]);
+                download(encryptedBlob, `${Date.now()}.encoded`);
+            })
+        }
+    }
 
     /* INITIALIZE */
-    fileEncryption.init();
-
+    pswd.init();
+    details.init();
+    fileInput.init();
+    textInput.init();
 });
 

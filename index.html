@@ -13,23 +13,14 @@
         <header class="password-input-mode">
             <hgroup>
                 <h1></h1>
+                <span class="password-input-mode"></span>
             </hgroup>
             <div id="password-input" class="password-input-mode">
                 <div>
                     <div>Enter Encryption Key</div>
                     <label>
                         >
-                        <input
-                            type="password"
-                            onkeypress="
-                                function pswdkeydown(e){
-                                    if (e.keyCode === 13){
-                                        document.querySelectorAll('.password-input-mode')
-                                        .forEach(element => element.classList.remove('password-input-mode'))
-                                    }
-                                }
-                                return pswdkeydown(event)
-                            "/>
+                        <input type="password"/>
                     </label>
                 </div>
                 
@@ -41,11 +32,11 @@
                 <summary>&nbsp;<span>File Input</span></summary>
                 <div class="details-content">
                     <div id="file-encryption">
-                        <label class="file-upload-button">
+                        <label class="button">
                             Encrypt File
                             <input type="file" data-role="encrypt" accept=".txt"/>
                         </label>
-                        <label class="file-upload-button secondary">
+                        <label class="button secondary">
                             Decrypt File
                             <input type="file" data-role="decrypt"/>
                         </label>
@@ -56,22 +47,14 @@
                 <summary>&nbsp;<span>Text Input</span></summary>
                 <div class="details-content">
                     <textarea id="text-input" rows="20" placeholder="Secretive Text Here..."></textarea>
+                    <div class="button-group">
+                        <button id="encrypt-text-input-button" class="button">Encrypt</button>
+                    </div>
                 </div>
             </details>
             <a id="download-anchor"></a>
         </main>
     </div>
     <script type="module" src="./index.js"></script>    
-    <!-- <script type="module">
-      import init, {encode_decode_demo} from "./pkg/hello_wasm.js";
-      init().then(() => {
-        document.querySelectorAll('#file-encryption input').forEach(element => {
-            element.addEventListener('change', function(){
-                const files = this.files; 
-                console.log(files);
-            })
-        })
-      });
-    </script> -->
   </body>
 </html>
