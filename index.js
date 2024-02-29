@@ -60,9 +60,9 @@ init().then(() => {
                         const file = this.files[0];
                         if (file){
                             const password = getPassword();
-                            const name = file.name.slice(0, file.name.indexOf('.'));
-                            const text = await file.text();
-                            const encrypted = encrypt(password, text);
+                            const name = file.name;
+                            const buffer = new Uint8Array(await file.arrayBuffer());
+                            const encrypted = encrypt(password, buffer);
                             const encryptedBlob = new Blob([encrypted]);
                             download(encryptedBlob, `${name}.encoded`);
                         }
@@ -74,12 +74,13 @@ init().then(() => {
                         if (file){
                             console.log(file);
                             const password = getPassword();
-                            const name = file.name.slice(0, file.name.indexOf('.'));
+                            const name = file.name.includes('.encoded') ?
+                                            file.name.replace('.encoded', '') :
+                                            `${file.name}.decoded`;
                             const arrBuff = new Uint8Array(await file.arrayBuffer()); 
                             const decrypted = decrypt(password, arrBuff);
                             const decryptedBlob = new Blob([decrypted]); 
-                            download(decryptedBlob, `${name}.decoded.txt`);
-
+                            download(decryptedBlob, `${name}`);
                         }
                     })
                 }

@@ -37,19 +37,15 @@ pub fn encode_decode_demo(password: &str, plaintext: &str) {
 }
 
 #[wasm_bindgen]
-pub fn encrypt(password: &str, plaintext: &str) -> Vec<u8>{
+pub fn encrypt(password: &str, plaintext: &[u8]) -> Vec<u8>{
     console_error_panic_hook::set_once();
-    let ciphertext = compress_and_encrypt(password, plaintext.as_bytes()).unwrap();
-    
-    return ciphertext
+    compress_and_encrypt(password, plaintext).unwrap()
 }
 
 #[wasm_bindgen]
-pub fn decrypt(password: &str, ciphertext: Vec<u8>) -> String {
+pub fn decrypt(password: &str, ciphertext: Vec<u8>) -> Vec<u8> {
     console_error_panic_hook::set_once();
-    let decoded = decrypt_and_decompress(password, &ciphertext[..]).unwrap();
-    let decoded_string = String::from_utf8(decoded).unwrap();
-    return decoded_string;
+    decrypt_and_decompress(password, &ciphertext[..]).unwrap()
 }
 
 fn derive_key_from_password(password: &str) -> Result<[u8; PWD_KEY_SIZE], &'static str> {
