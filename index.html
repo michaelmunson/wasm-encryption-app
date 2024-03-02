@@ -8,7 +8,6 @@
   <body class="password-input-mode">
     
     <div id="app">
-        
         <!-- HEADER -->
         <header class="password-input-mode">
             <hgroup>
@@ -54,6 +53,33 @@
             </details>
             <a id="download-anchor"></a>
         </main>
+        <div id="modal-icon">
+            <img id="question-mark" src="./q.svg" alt="Icon" width="30" height="30">
+        </div>
+        <div id="about-modal" style="display: none;">
+          <div>
+            ClientCrypt is a purely client-side tool for password-protecting
+            arbitrary files. To reiterate: your files will never leave your device.
+            Just enter a password and upload a file, and an encrypted version will
+            be downloaded immediately. To decrypt the file, just re-enter the
+            password and upload the encrypted file.
+          </div>
+          <br>
+          <div>
+            <h3>How does it work?</h3>
+            <ol>
+              <li>After entering a password, the Argon2 algorithm converts it to a 256-bit key.</li>
+              <li>When uploading a file for encryption, it is maximally compressed with GZIP and then encrypted with AES256.</li>
+              <li>When uploading a file for decryption, it is decrypted with AES256 and the decompressed.</li>
+              <li>The resulting file is automatically downloaded.</li>
+            </ol>
+          </div>
+          <br>
+          <div>
+            <a href="https://github.com/michaelmunson/wasm-encryption-app">Source Code</a>
+          </div>
+        </div>
+        <div id="overlay"></div>
     </div>
     <script type="module" src="./index.js"></script>    
   </body>

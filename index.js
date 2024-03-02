@@ -100,10 +100,33 @@ init().then(() => {
         }
     }
 
+    const modal = {
+        init(){
+            const button = document.getElementById('question-mark')
+            button.addEventListener('click', function(){
+                const modal = document.getElementById('about-modal');
+                const displayValue = window.getComputedStyle(modal).getPropertyValue('display');
+                const newDisplayValue = displayValue === 'none' ? 'block' : 'none';
+                modal.style.display = newDisplayValue;
+                modal.style.zIndex = 2;
+                const overlay = document.getElementById('overlay');
+                overlay.style.display = newDisplayValue;
+            })
+            const overlay = document.getElementById('overlay');
+            overlay.addEventListener('click', function(){
+                const modal = document.getElementById('about-modal');
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+                modal.style.zIndex = 0;
+            })
+        }
+    }
+
     /* INITIALIZE */
     pswd.init();
     details.init();
     fileInput.init();
     textInput.init();
+    modal.init();
 });
 
