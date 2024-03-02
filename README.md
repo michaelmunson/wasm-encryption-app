@@ -12,7 +12,7 @@ password and upload the encrypted file.
 4. The resulting file is automatically downloaded.
 
 ## Developers
-### Running
+### Building
 ```bash
 bash build.sh
 ```
