@@ -11,7 +11,7 @@ password and upload the encrypted file.
 3. When uploading a file for decryption, it is decrypted with AES256 and the decompressed.
 4. The resulting file is automatically downloaded.
 
-## Devvelopers
+## Developers
 ### Running
 ```bash
 bash build.sh
